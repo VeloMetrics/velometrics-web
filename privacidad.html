@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Privacidad — VeloMetrics</title>
+  <meta name="description" content="Política de privacidad, protección de datos y política de cookies de VeloMetrics, conforme al RGPD y la LSSI-CE." />
+  <!-- Indexing: this page should be accessible but not the focus of search -->
+  <meta name="robots" content="noindex, follow" />
+
+  <!-- Same fonts as main site for visual consistency -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Noto+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Design tokens (same palette as main site) ─── */
+    :root {
+      --bg-deep:       #030f08;
+      --bg-dark:       #071a0e;
+      --bg-card:       #0c2415;
+      --border:        #1a3d26;
+      --border-light:  #265238;
+      --green-accent:  #2dce72;
+      --green-dark:    #0f7a3e;
+      --amber:         #F5A623;
+      --strava:        #FC4C02;
+      --text-primary:  #eef7f1;
+      --text-secondary:#8ab89a;
+      --text-muted:    #4d7a5e;
+      --font-display:  'Syne', sans-serif;
+      --font-body:     'DM Sans', sans-serif;
+      --font-brand:    'Noto Sans', sans-serif;
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-dark);
+      color: var(--text-primary);
+      line-height: 1.7;
+    }
+
+    /* ── Background grid (decorative, same as main) ── */
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image:
+        linear-gradient(rgba(45,206,114,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(45,206,114,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    /* ── Header ─────────────────────────────────────── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0 24px;
+      background: rgba(3, 15, 8, 0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      max-width: 860px;
+      margin: 0 auto;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-family: var(--font-brand);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .back-link {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--green-accent); }
+
+    /* ── Main content area ───────────────────────────── */
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+
+    /* ── Page title block ────────────────────────────── */
+    .page-header {
+      margin-bottom: 56px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-header .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green-accent);
+      background: rgba(45, 206, 114, 0.08);
+      border: 1px solid rgba(45, 206, 114, 0.2);
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+
+    .page-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+
+    .page-header .meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    .page-header .meta span {
+      display: inline-block;
+      margin-right: 20px;
+    }
+
+    /* ── Table of contents (sticky sidebar feel as inline nav) */
+    .toc {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+
+    .toc-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .toc ol {
+      list-style: none;
+      counter-reset: toc-counter;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 6px 24px;
+    }
+
+    .toc ol li {
+      counter-increment: toc-counter;
+      position: relative;
+    }
+
+    .toc ol li::before {
+      content: counter(toc-counter, decimal-leading-zero) ".";
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-right: 8px;
+    }
+
+    .toc a {
+      font-size: 13px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .toc a:hover { color: var(--green-accent); }
+
+    /* ── Section blocks ──────────────────────────────── */
+    .policy-section {
+      margin-bottom: 56px;
+      scroll-margin-top: 80px; /* accounts for sticky header */
+    }
+
+    .policy-section h2 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .policy-section h2 .section-num {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 3px 9px;
+      border-radius: 100px;
+    }
+
+    .policy-section h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--green-accent);
+      margin: 24px 0 10px;
+    }
+
+    /* All prose paragraphs */
+    .policy-section p {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    .policy-section p strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* Info box — highlight important items */
+    .info-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--green-accent);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 16px 20px;
+      margin: 20px 0;
+    }
+
+    .info-box p {
+      margin-bottom: 0;
+      font-size: 14px;
+    }
+
+    .warning-box {
+      background: rgba(252,76,2,0.06);
+      border: 1px solid rgba(252,76,2,0.2);
+      border-left: 3px solid var(--strava);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 16px 20px;
+      margin: 20px 0;
+    }
+
+    .warning-box p {
+      margin-bottom: 0;
+      font-size: 14px;
+    }
+
+    /* Data table */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+
+    .data-table thead tr {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .data-table th {
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .data-table td {
+      padding: 12px 16px;
+      color: var(--text-secondary);
+      font-weight: 300;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .data-table tr:last-child td { border-bottom: none; }
+
+    .data-table td strong { color: var(--text-primary); font-weight: 600; }
+
+    /* Rights list */
+    .rights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+      margin: 20px 0;
+    }
+
+    .right-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+    }
+
+    .right-item .right-icon {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .right-item .right-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .right-item .right-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      font-weight: 300;
+    }
+
+    /* Cookie type table */
+    .cookie-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .cookie-badge.essential { background: rgba(45,206,114,0.12); color: var(--green-accent); border: 1px solid rgba(45,206,114,0.2); }
+    .cookie-badge.analytics { background: rgba(245,166,35,0.12); color: var(--amber); border: 1px solid rgba(245,166,35,0.2); }
+    .cookie-badge.third-party { background: rgba(252,76,2,0.1); color: var(--strava); border: 1px solid rgba(252,76,2,0.2); }
+
+    /* Contact box */
+    .contact-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 32px;
+      margin-top: 16px;
+    }
+
+    .contact-box p { margin-bottom: 8px; }
+
+    .contact-box a {
+      color: var(--green-accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ── Footer ──────────────────────────────────────── */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 28px 24px;
+    }
+
+    .footer-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--text-secondary); }
+
+    .footer-copy {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <!-- ── Header ──────────────────────────────────────── -->
+  <header>
+    <nav>
+      <a href="index.html" class="nav-logo" aria-label="Volver al inicio de VeloMetrics">
+        <!-- Inline SVG gear+bars mark, same as main site -->
+        <svg width="48" height="48" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="18" cy="18" r="17" fill="#071a0e"/>
+          <path d="M18 4.5 L19.3 7.5 L22.5 6.5 L22.5 9.8 L25.5 10.5 L24.2 13.5 L26.5 15.5 L24.2 17.5 L25.5 20.5 L22.5 21.2 L22.5 24.5 L19.3 23.5 L18 26.5 L16.7 23.5 L13.5 24.5 L13.5 21.2 L10.5 20.5 L11.8 17.5 L9.5 15.5 L11.8 13.5 L10.5 10.5 L13.5 9.8 L13.5 6.5 L16.7 7.5 Z" fill="#F5A623"/>
+          <circle cx="18" cy="16" r="7" fill="#071a0e"/>
+          <rect x="13" y="15" width="3" height="5" rx="1" fill="#2dce72"/>
+          <rect x="17" y="12" width="3" height="8" rx="1" fill="#2dce72"/>
+          <rect x="21" y="13.5" width="3" height="6.5" rx="1" fill="#2dce72" opacity="0.7"/>
+        </svg>
+        VeloMetrics
+      </a>
+      <a href="index.html" class="back-link">← Volver al inicio</a>
+    </nav>
+  </header>
+
+  <!-- ── Main content ─────────────────────────────────── -->
+  <main>
+
+    <!-- Page title -->
+    <div class="page-header">
+      <div class="tag">Legal</div>
+      <h1>Política de Privacidad y Cookies</h1>
+      <div class="meta">
+        <span>📅 Última actualización: enero 2026</span>
+        <span>🇪🇸 Conforme al RGPD y la LSSI-CE</span>
+      </div>
+    </div>
+
+    <!-- Table of contents -->
+    <div class="toc" role="navigation" aria-label="Índice de contenidos">
+      <div class="toc-title">Índice de contenidos</div>
+      <ol>
+        <li><a href="#identificacion">Identificación del Responsable</a></li>
+        <li><a href="#datos-recogidos">Datos que recopilamos</a></li>
+        <li><a href="#finalidad">Finalidad del tratamiento</a></li>
+        <li><a href="#seguridad">Seguridad de los datos</a></li>
+        <li><a href="#conservacion">Plazo de conservación</a></li>
+        <li><a href="#derechos">Tus derechos (RGPD)</a></li>
+        <li><a href="#cookies">Política de Cookies</a></li>
+        <li><a href="#contacto">Contacto y reclamaciones</a></li>
+      </ol>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         SECCIÓN 1 — IDENTIFICACIÓN
+         ═══════════════════════════════════════════════ -->
+    <section class="policy-section" id="identificacion">
+      <h2><span class="section-num">01</span> Identificación del Responsable del Tratamiento</h2>
+
+      <p>En cumplimiento del artículo 13 del <strong>Reglamento (UE) 2016/679 (RGPD)</strong> y de la <strong>Ley Orgánica 3/2018 de Protección de Datos Personales y Garantía de los Derechos Digitales (LOPDGDD)</strong>, te informamos de que el responsable del tratamiento de tus datos personales es:</p>
+
+      <div class="contact-box">
+        <p><strong>Denominación:</strong> VeloMetrics — Consultoría de Datos</p>
+        <p><strong>Actividad:</strong> Consultoría de análisis de datos de rendimiento deportivo para ciclistas</p>
+        <p><strong>Domicilio:</strong> España</p>
+        <p><strong>Correo electrónico de contacto:</strong> <a href="/cdn-cgi/l/email-protection#1b6b69726d7a78727f7a7f5b6d7e7774767e6f69727868357274"><span class="__cf_email__" data-cfemail="4b3b39223d2a28222f2a2f0b3d2e2724262e3f39222838652224">[email&#160;protected]</span></a></p>
+        <p><strong>Web:</strong> <a href="https://velometrics.io">https://velometrics.io</a></p>
+      </div>
+
+      <p>La presente política se aplica a todos los datos personales tratados a través del sitio web de VeloMetrics y de los servicios asociados a la plataforma de análisis de rendimiento, incluyendo la integración con la API oficial de Strava.</p>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SECCIÓN 2 — DATOS RECOGIDOS
+         ═══════════════════════════════════════════════ -->
+    <section class="policy-section" id="datos-recogidos">
+      <h2><span class="section-num">02</span> Datos que recopilamos</h2>
+
+      <p>VeloMetrics aplica el principio de <strong>minimización de datos</strong> recogido en el artículo 5.1.c del RGPD: únicamente tratamos los datos estrictamente necesarios para prestarte el servicio. A continuación te detallamos qué datos recogemos y de qué forma.</p>
+
+      <h3>2.1 — Datos del formulario de registro (Early Access)</h3>
+      <p>A través del formulario de captación de leads —gestionado mediante la plataforma <strong>Tally.so</strong>— recopilamos los siguientes datos de carácter personal:</p>
+
+      <table class="data-table" role="table">
+        <thead>
+          <tr>
+            <th scope="col">Dato</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Obligatorio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Nombre</strong></td>
+            <td>Nombre o alias del usuario, únicamente para personalizar la comunicación</td>
+            <td>Sí</td>
+          </tr>
+          <tr>
+            <td><strong>Correo electrónico</strong></td>
+            <td>Dirección de email para enviar la clave de acceso a la plataforma y comunicaciones relevantes sobre el servicio</td>
+            <td>Sí</td>
+          </tr>
+          <tr>
+            <td><strong>Contraseña</strong></td>
+            <td>Contraseña elegida por el usuario para proteger su sesión. Se almacena únicamente con <strong>hash bcrypt</strong> (nunca en texto plano). VeloMetrics no tiene acceso a tu contraseña en claro.</td>
+            <td>Sí</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="info-box">
+        <p>📋 <strong>Nota sobre Tally.so:</strong> El formulario está alojado en Tally.so, un procesador de datos externo. Tally actúa como encargado del tratamiento bajo contrato conforme al artículo 28 del RGPD. Puedes consultar la política de privacidad de Tally en <a href="https://tally.so/privacy" target="_blank" rel="noopener" style="color:var(--green-accent)">tally.so/privacy</a>.</p>
+      </div>
+
+      <h3>2.2 — Conexión con Strava vía API oficial</h3>
+      <p>VeloMetrics se conecta a tu cuenta de Strava mediante el protocolo <strong>OAuth 2.0</strong> a través de la <strong>API oficial de Strava</strong>. Este proceso funciona de la siguiente manera:</p>
+
+      <p>Cuando autorizas la conexión, Strava emite un <strong>token de acceso temporal</strong> que VeloMetrics recibe y utiliza exclusivamente para leer tus actividades de ciclismo (cadencia, potencia, frecuencia cardíaca, distancia y datos GPS). Una vez completado el procesamiento de la sesión analítica, este token <strong>se descarta de la memoria</strong> y no se almacena en ningún sistema persistente.</p>
+
+      <div class="warning-box">
+        <p>⚠️ <strong>Importante:</strong> VeloMetrics <strong>no solicita ni almacena tu contraseña de Strava</strong> en ningún momento. La autenticación se realiza íntegramente en los servidores de Strava. Nosotros solo recibimos el token de autorización temporal que tú concedes expresamente.</p>
+      </div>
+
+      <p>Strava también actúa como encargado del tratamiento independiente. Puedes revocar el acceso de VeloMetrics a tu cuenta de Strava en cualquier momento desde <strong>Configuración → Mi Privacidad → Aplicaciones autorizadas</strong> en tu perfil de Strava.</p>
+
+      <h3>2.3 — Datos de navegación (cookies)</h3>
+      <p>Recopilamos información técnica de navegación de forma anónima o pseudónima a través de cookies. Los detalles completos se encuentran en la <a href="#cookies" style="color:var(--green-accent)">Sección 7 — Política de Cookies</a>.</p>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SECCIÓN 3 — FINALIDAD
+         ═══════════════════════════════════════════════ -->
+    <section class="policy-section" id="finalidad">
+      <h2><span class="section-num">03</span> Finalidad del tratamiento y base jurídica</h2>
+
+      <table class="data-table" role="table">
+        <thead>
+          <tr>
+            <th scope="col">Finalidad</th>
+            <th scope="col">Base jurídica (Art. 6 RGPD)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Gestionar tu solicitud de acceso anticipado a la plataforma y enviarte la clave de acceso</td>
+            <td>Ejecución de una relación precontractual (Art. 6.1.b)</td>
+          </tr>
+          <tr>
+            <td>Enviarte comunicaciones informativas sobre el estado de la plataforma, nuevas funcionalidades y resultados de tu rendimiento</td>
+            <td>Consentimiento explícito (Art. 6.1.a) — marcado de casilla en el formulario</td>
+          </tr>
+          <tr>
+            <td>Procesar tus datos de actividad de Strava para calcular métricas fisiológicas (NP, TSS, IF, W/kg)</td>
+            <td>Ejecución del servicio solicitado (Art. 6.1.b)</td>
+          </tr>
+          <tr>
+            <td>Análisis estadístico del uso de la plataforma para mejorar el servicio</td>
+            <td>Interés legítimo del responsable (Art. 6.1.f) — datos anonimizados</td>
+          </tr>
+          <tr>
+            <td>Cumplimiento de obligaciones legales (fiscales, contables, de seguridad)</td>
+            <td>Obligación legal (Art. 6.1.c)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>VeloMetrics <strong>no cede tus datos personales a terceros</strong> con fines comerciales ni publicitarios. El acceso de terceros queda limitado a los proveedores tecnológicos necesarios para prestar el servicio (Tally.so, proveedores de infraestructura en la nube), todos bajo contratos de encargado del tratamiento conformes al artículo 28 del RGPD.</p>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SECCIÓN 4 — SEGURIDAD
+         ═══════════════════════════════════════════════ -->
+    <section class="policy-section" id="seguridad">
+      <h2><span class="section-num">04</span> Seguridad de los datos</h2>
+
+      <p>VeloMetrics aplica medidas técnicas y organizativas apropiadas conforme al artículo 32 del RGPD para garantizar un nivel de seguridad adecuado al riesgo. Las medidas implementadas incluyen:</p>
+
+      <div class="info-box">
+        <p>🔒 <strong>Comunicaciones cifradas:</strong> Todo el tráfico entre el navegador del usuario y los servidores de VeloMetrics se transmite mediante <strong>HTTPS/TLS 1.3</strong>. Los datos de actividad de Strava nunca viajan en texto plano.</p>
+      </div>
+
+      <div class="info-box">
+        <p>⚡ <strong>Sesiones volátiles:</strong> El procesamiento de datos de actividad de Strava se realiza <strong>en memoria RAM</strong> durante la sesión activa del usuario. Al cerrar la sesión o transcurrido el tiempo de inactividad configurado, todos los datos de actividad se eliminan automáticamente del servidor. No existe ninguna persistencia de datos de rendimiento entre sesiones.</p>
+      </div>
+
+      <div class="info-box">
+        <p>🛡️ <strong>Infraestructura en servidores seguros:</strong> El servicio se despliega sobre infraestructura de nube certificada (Google Cloud Platform), que cumple con los estándares ISO 27001, SOC 2 Tipo II y las adecuaciones al RGPD para tratamientos dentro del Espacio Económico Europeo.</p>
+      </div>
+
+      <div class="info-box">
+        <p>🔑 <strong>Contraseñas con hash irreversible:</strong> Las contraseñas se almacenan exclusivamente mediante el algoritmo <strong>bcrypt</strong> con factor de coste elevado. VeloMetrics no puede recuperar tu contraseña original bajo ninguna circunstancia.</p>
+      </div>
+
+      <p>En caso de que se produjera una brecha de seguridad que suponga un riesgo para tus derechos y libertades, VeloMetrics lo notificará a la <strong>Agencia Española de Protección de Datos (AEPD)</strong> en el plazo de 72 horas conforme al artículo 33 del RGPD, y te informará a ti directamente si el riesgo fuera alto.</p>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SECCIÓN 5 — CONSERVACIÓN
+         ═══════════════════════════════════════════════ -->
+    <section class="policy-section" id="conservacion">
+      <h2><span class="section-num">05</span> Plazo de conservación de los datos</h2>
+
+      <p>Conforme al principio de <strong>limitación del plazo de conservación</strong> (Art. 5.1.e del RGPD), los datos personales se mantendrán únicamente durante el tiempo necesario para cumplir con la finalidad para la que fueron recogidos.</p>
+
+      <table class="data-table" role="table">
+        <thead>
+          <tr>
+            <th scope="col">Tipo de dato</th>
+            <th scope="col">Plazo de conservación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Datos del formulario de registro (nombre, email, contraseña)</strong></td>
+            <td>Durante la <strong>fase Beta de la plataforma</strong>, o hasta que el usuario solicite la baja del servicio, lo que ocurra antes. Tras el cierre de la fase Beta, los datos se migrarán al sistema de producción con consentimiento renovado, o se eliminarán de forma segura.</td>
+          </tr>
+          <tr>
+            <td><strong>Datos de actividad de Strava (potencia, cadencia, GPS)</strong></td>
+            <td>Exclusivamente durante la <strong>sesión activa</strong>. Se eliminan de la memoria al finalizar la sesión. No se conservan datos de actividad entre sesiones.</td>
+          </tr>
+          <tr>
+            <td><strong>Datos de navegación / cookies de analítica</strong></td>
+            <td>Máximo <strong>13 meses</strong> desde su registro, conforme a las directrices de la AEPD.</td>
+          </tr>
+          <tr>
+            <td><strong>Registros de acceso (logs de seguridad)</strong></td>
+            <td><strong>12 meses</strong>, conforme a la Ley de Seguridad de la Información.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Una vez transcurridos los plazos indicados, los datos serán eliminados de forma segura o, cuando proceda legalmente (por ejemplo, para el cumplimiento de obligaciones fiscales), conservados en modo bloqueado, accesibles únicamente para las autoridades competentes.</p>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SECCIÓN 6 — DERECHOS
+         ═══════════════════════════════════════════════ -->
+    <section class="policy-section" id="derechos">
+      <h2><span class="section-num">06</span> Tus derechos como interesado (RGPD)</h2>
+
+      <p>El RGPD te reconoce los siguientes derechos en relación con tus datos personales. Puedes ejercerlos en cualquier momento escribiendo a <a href="/cdn-cgi/l/email-protection#1565677c6374767c717471556370797a787061677c76663b7c7a" style="color:var(--green-accent)"><span class="__cf_email__" data-cfemail="5727253e2136343e3336331721323b383a3223253e3424793e38">[email&#160;protected]</span></a>, indicando tu nombre, email de registro y el derecho que deseas ejercer.</p>
+
+      <div class="rights-grid">
+        <div class="right-item">
+          <div class="right-icon">👁️</div>
+          <div class="right-name">Acceso (Art. 15)</div>
+          <div class="right-desc">Obtener confirmación sobre si tratamos tus datos y una copia de los mismos.</div>
+        </div>
+        <div class="right-item">
+          <div class="right-icon">✏️</div>
+          <div class="right-name">Rectificación (Art. 16)</div>
+          <div class="right-desc">Corregir datos inexactos o incompletos que te conciernan.</div>
+        </div>
+        <div class="right-item">
+          <div class="right-icon">🗑️</div>
+          <div class="right-name">Supresión (Art. 17)</div>
+          <div class="right-desc">Solicitar la eliminación de tus datos cuando ya no sean necesarios o retires tu consentimiento.</div>
+        </div>
+        <div class="right-item">
+          <div class="right-icon">⏸️</div>
+          <div class="right-name">Limitación (Art. 18)</div>
+          <div class="right-desc">Solicitar que suspendamos el tratamiento mientras se resuelve una impugnación.</div>
+        </div>
+        <div class="right-item">
+          <div class="right-icon">📦</div>
+          <div class="right-name">Portabilidad (Art. 20)</div>
+          <div class="right-desc">Recibir tus datos en formato estructurado y de uso común para transmitirlos a otro responsable.</div>
+        </div>
+        <div class="right-item">
+          <div class="right-icon">🚫</div>
+          <div class="right-name">Oposición (Art. 21)</div>
+          <div class="right-desc">Oponerte al tratamiento basado en interés legítimo o con fines de marketing directo.</div>
+        </div>
+      </div>
+
+      <p>Responderemos a tu solicitud en el plazo máximo de <strong>un mes</strong> desde su recepción (prorrogable dos meses adicionales en casos complejos, con notificación previa). El ejercicio de estos derechos es <strong>gratuito</strong>.</p>
+
+      <p>Si consideras que el tratamiento de tus datos vulnera la normativa, tienes derecho a presentar una reclamación ante la <strong>Agencia Española de Protección de Datos (AEPD)</strong> en <a href="https://www.aepd.es" target="_blank" rel="noopener" style="color:var(--green-accent)">www.aepd.es</a>.</p>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SECCIÓN 7 — COOKIES
+         ═══════════════════════════════════════════════ -->
+    <section class="policy-section" id="cookies">
+      <h2><span class="section-num">07</span> Política de Cookies</h2>
+
+      <p>De conformidad con el artículo 22.2 de la <strong>Ley 34/2002 de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE)</strong> y las directrices de la AEPD, te informamos del uso de cookies en el sitio web de VeloMetrics.</p>
+
+      <h3>¿Qué es una cookie?</h3>
+      <p>Una cookie es un pequeño archivo de texto que un sitio web almacena en tu dispositivo cuando lo visitas. Las cookies permiten que el sitio recuerde tus preferencias y acciones durante un periodo de tiempo, evitando que tengas que volver a configurarlas en cada visita.</p>
+
+      <h3>Tipos de cookies que utilizamos</h3>
+
+      <table class="data-table" role="table">
+        <thead>
+          <tr>
+            <th scope="col">Cookie</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Finalidad</th>
+            <th scope="col">Duración</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>vm_cookie_consent</code></td>
+            <td><span class="cookie-badge essential">Esencial</span></td>
+            <td>Almacena tu preferencia sobre el consentimiento de cookies para no mostrar el banner en visitas posteriores</td>
+            <td>1 año</td>
+          </tr>
+          <tr>
+            <td>Cookies de sesión OAuth</td>
+            <td><span class="cookie-badge essential">Esencial</span></td>
+            <td>Mantienen la sesión activa durante el uso de la plataforma de análisis. Se eliminan al cerrar la sesión o el navegador.</td>
+            <td>Sesión</td>
+          </tr>
+          <tr>
+            <td>Google Analytics (_ga, _gid)</td>
+            <td><span class="cookie-badge analytics">Analítica</span></td>
+            <td>Miden el uso anónimo del sitio: páginas visitadas, tiempo de permanencia, origen del tráfico. La IP se anonimiza antes de su registro.</td>
+            <td>2 años / 24h</td>
+          </tr>
+          <tr>
+            <td>Tally.so (_tally_*)</td>
+            <td><span class="cookie-badge third-party">Terceros</span></td>
+            <td>Necesarias para el correcto funcionamiento del formulario de captación de leads integrado mediante iframe de Tally.so</td>
+            <td>Sesión</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Cómo gestionar o eliminar las cookies</h3>
+      <p>Puedes configurar tu navegador para <strong>rechazar todas las cookies, aceptarlas solo de ciertos sitios, o avisarte cuando un sitio quiera instalar una cookie</strong>. Consulta la ayuda de tu navegador para obtener instrucciones específicas:</p>
+
+      <p>
+        <a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener" style="color:var(--green-accent);margin-right:16px">Google Chrome</a>
+        <a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias" target="_blank" rel="noopener" style="color:var(--green-accent);margin-right:16px">Mozilla Firefox</a>
+        <a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener" style="color:var(--green-accent)">Safari</a>
+      </p>
+
+      <div class="warning-box">
+        <p>⚠️ La desactivación de las cookies <strong>esenciales</strong> puede impedir el correcto funcionamiento de la plataforma de análisis, incluyendo el mantenimiento de la sesión de usuario.</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SECCIÓN 8 — CONTACTO
+         ═══════════════════════════════════════════════ -->
+    <section class="policy-section" id="contacto">
+      <h2><span class="section-num">08</span> Contacto y reclamaciones</h2>
+
+      <p>Para cualquier consulta, solicitud de ejercicio de derechos o reclamación relacionada con el tratamiento de tus datos personales, puedes dirigirte a:</p>
+
+      <div class="contact-box">
+        <p>📧 <strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#94e4e6fde2f5f7fdf0f5f0d4e2f1f8fbf9f1e0e6fdf7e7bafdfb"><span class="__cf_email__" data-cfemail="bececcd7c8dfddd7dadfdafec8dbd2d1d3dbcaccd7ddcd90d7d1">[email&#160;protected]</span></a></p>
+        <p>🌐 <strong>Web:</strong> <a href="https://velometrics.io">https://velometrics.io</a></p>
+        <p>⚖️ <strong>Autoridad de control:</strong> Si no recibes respuesta satisfactoria, puedes reclamar ante la <a href="https://www.aepd.es/es/derechos-y-deberes/conoce-tus-derechos/derecho-de-reclamacion-ante-la-aepd" target="_blank" rel="noopener">Agencia Española de Protección de Datos (AEPD)</a>.</p>
+      </div>
+
+      <p style="margin-top: 28px;">VeloMetrics se reserva el derecho a actualizar esta Política de Privacidad para adaptarla a cambios normativos o funcionales del servicio. Cuando se produzcan modificaciones sustanciales, lo comunicaremos a los usuarios registrados por correo electrónico con al menos 15 días de antelación.</p>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ──────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <a href="index.html" class="nav-logo" style="font-size:14px" aria-label="VeloMetrics inicio">
+        <svg width="22" height="22" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <circle cx="18" cy="18" r="17" fill="#071a0e"/>
+          <path d="M18 4.5 L19.3 7.5 L22.5 6.5 L22.5 9.8 L25.5 10.5 L24.2 13.5 L26.5 15.5 L24.2 17.5 L25.5 20.5 L22.5 21.2 L22.5 24.5 L19.3 23.5 L18 26.5 L16.7 23.5 L13.5 24.5 L13.5 21.2 L10.5 20.5 L11.8 17.5 L9.5 15.5 L11.8 13.5 L10.5 10.5 L13.5 9.8 L13.5 6.5 L16.7 7.5 Z" fill="#F5A623"/>
+          <circle cx="18" cy="16" r="7" fill="#071a0e"/>
+          <rect x="13" y="15" width="3" height="5" rx="1" fill="#2dce72"/>
+          <rect x="17" y="12" width="3" height="8" rx="1" fill="#2dce72"/>
+          <rect x="21" y="13.5" width="3" height="6.5" rx="1" fill="#2dce72" opacity="0.7"/>
+        </svg>
+        VeloMetrics
+      </a>
+      <nav class="foo
